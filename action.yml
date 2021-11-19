@@ -1,0 +1,35 @@
+name: 'config-validator-action'
+description: 'Validation and packaging dynamic config artifacts'
+inputs:
+  search_path:
+    description: 'Path to the configuration files'
+    required: true
+    default: './'
+
+  search_extensions:
+    description: 'Extensions to filter (comma-separated values)'
+    required: true
+    default: 'json,conf,properties'
+
+  output_file_path:
+    description: 'Path to the result file creating by merge of all config definitions'
+    required: false
+    default: './configuration.json'
+
+  add_git_info:
+    description: 'Check for git repo info and add commit hash and timestamp to the output file'
+    required: false
+    default: 'true'
+
+outputs:
+  output_file:
+    description: 'Result file creating by merge of all config definitions'
+
+runs:
+  using: 'docker'
+  image: registry.olxbr.io:5000/maven:3.6.3-jdk-11-slim
+  args:
+    - ${{ inputs.search_path }}
+    - ${{ inputs.search_extensions }}
+    - ${{ inputs.output_file_path }}
+    - ${{ inputs.add_git_info }}

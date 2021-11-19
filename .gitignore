@@ -1,0 +1,8 @@
+.env
+.DS_Store
+.idea
+.bash_history
+tmp
+.vscode
+*.iml
+.idea/
