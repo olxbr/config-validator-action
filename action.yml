@@ -27,7 +27,7 @@ outputs:
 
 runs:
   using: 'docker'
-  image: registry.olxbr.io:5000/maven:3.6.3-jdk-11-slim
+  image: 073521391622.dkr.ecr.us-east-1.amazonaws.com/maven:3.6.3-jdk-11-slim
   args:
     - ${{ inputs.search_path }}
     - ${{ inputs.search_extensions }}
